@@ -7,16 +7,16 @@ function showMessage(){
     console.log("Message 1");
 }
 
-showMessage();
+//showMessage();
 function showMessage(){
     console.log("Message 2");
 }
-showMessage();// function được định nghĩa sau sẽ ghi đề function trước đó 
+//showMessage();// function được định nghĩa sau sẽ ghi đề function trước đó 
 
 function showMessage(){
     console.log("Message 3");
 }
-showMessage();// từ những ví dụ trên cho thấy khi mình thực hiện khai báo hàm thì hàm được thực hiện và ghi đề lên nhau trước khi lời gọi hàm đầu tên dduocj gọi ra
+//showMessage();// từ những ví dụ trên cho thấy khi mình thực hiện khai báo hàm thì hàm được thực hiện và ghi đề lên nhau trước khi lời gọi hàm đầu tên dduocj gọi ra
 
 
 
@@ -26,3 +26,12 @@ function Linh(){
     var fullname= 'Linh Nguyen';
     console.log('Linh Nguyen');
 }
+
+function showMessage2(){
+    function showMessage3(){
+        console.log('Linh Nguyen 12345');
+    }
+    showMessage3();
+}
+
+showMessage2();// khi gọi hàm này thì hàm trong hàm này được thực thi và được gọi.
