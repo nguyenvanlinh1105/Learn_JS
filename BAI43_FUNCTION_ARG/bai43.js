@@ -24,7 +24,7 @@ myFunction("Hello LinhNguyen", "ban la mot nguoi tuyet voi")// đối số
 
 
 
- // sử dụng for of
+ // sử dụng for of: lấy giá trị sau mỗi lần lặp// lấy index sau mỗi lần lặp. 
 // argument nhân vô số tham số khi truyền vào hàm. 
  
 function myFUNCITON( ){
