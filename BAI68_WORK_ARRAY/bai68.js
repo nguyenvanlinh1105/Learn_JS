@@ -8,7 +8,7 @@
     -Unshift
     -Splicing 
     -Concat
-    -Slicing
+    -Slicing: mỗi hàm này không làm thay đổi mảng còn lại làm thay đổi hết
 
 */
 
