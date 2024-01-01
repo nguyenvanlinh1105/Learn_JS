@@ -17,7 +17,7 @@ var myInfo={
     //emailKey  theo cách này nó sẽ hiểu emailKey là một key 
     [emailKey]:'vanlinh@gmail.com.vn', 
     getName : function(){
-        return this.name;
+        return this.firstName;
     }
 }
 console.log(myInfo.myFunction())
@@ -36,5 +36,6 @@ var myKey ='address'
 console.log(myInfo[myKey])// không truyền chuỗi nếu truyền chuỗi thi nó sẽ hiểu myKey là key trong object và nó đi tim 
 
 // xóa một key có trong ojec
-delete myInfo.ate;
+delete myInfo.age;
 console.log(myInfo)
+console.log(myInfo.getName())
