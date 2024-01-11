@@ -26,12 +26,21 @@ var courses=[
 ]
 // nhận lại một mảng có số lượng phần tử bằng ố lượng phần tử có giá trị của mảng cũ 
 var newCourses = courses.map(function(course, index, array){
-
+    return {
+        id : course.id,
+        name:`Khoa hoc: ${course.name}`,
+        coin:course.coin,
+        coinText:`Gia : ${course.coin}`
+    }
 
 });
 
-console.log("linh")
+console.log(newCourses)
 
+// tach
+var newCourses1 = courses.map(function(course, index){
+    return {name:`Khoa hoc ${course.name}`}
+})
 
 
 
