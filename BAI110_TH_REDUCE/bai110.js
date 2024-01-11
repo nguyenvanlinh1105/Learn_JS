@@ -40,11 +40,11 @@ console.log(totalCoin)
 
 console.log("Linh Nguyễn Đag làm phẳng mảng flat")
 var numbers =[1, 2, [2, 3], [4, 5, 2], 9, 3]
-var resultFlat = numbers.reduce(function(acc, curr){
-    return acc.concat(curr)
+// bài này chúng ta sẽ sử dụng đến concat để nối mảng 
+var result  = numbers.reduce(function(acc, cur){
+    return acc.concat(cur)
 },[])
-console.log(resultFlat)
-
+console.log(result)
 
 // Bài toán lấy cacsf khóa học và đưa vào một mảng mới 
 var topics=[
