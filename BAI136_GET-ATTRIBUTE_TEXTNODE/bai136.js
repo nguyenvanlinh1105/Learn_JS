@@ -1,0 +1,2 @@
+// Lấy attribute
+// lấy text
