@@ -15,19 +15,19 @@ var html = document.getElementById("heading")
 console.log(
      html
 )
-// 2. get class 
+// 2. get class => node list
 html = document.getElementsByClassName("heading")
 console.log(
      html
 )
 
-// 3. get Tagname
+// 3. get Tagname=> html collection 
 html = document.getElementsByTagName("h1")
 console.log(
      html
 )
 
-// CSS selector
+// CSS selector=>node list 
 html = document.querySelector(".box .heading-2")
 console.log(
      html
