@@ -14,13 +14,24 @@ for(var i =0;i<aElement.length;i++){
 
 
 var ulElemet = document.querySelector('ul')
+ulElemet.onmousedown= function(e){
+    e.preventDefault();
+}
 ulElemet.onclick  = function(e){
+    // mình click vào thằng ul, nhma khi mình click vào thằng con của nó thì vẫn ăn và nổi bọt ra ngoài 
+    // bỏ hành vi mặc định cua nó là được 
     console.log(e.target)
 }
 
 
+// 2.Stoppropagation : ngăn chặn hành vi nổi bọt từ lớp con ra ngoài lớp cha 
+divElement = document.querySelector('div')
+divElement.onclick = function(e){
+    console.log("DIV")
+}
 
-
-
-
-// 2.Stoppropagation 
+divElement = document.querySelector('button')
+divElement.onclick = function(e){
+    e.stopPropagation();// n
+    console.log("Click me!")
+}
