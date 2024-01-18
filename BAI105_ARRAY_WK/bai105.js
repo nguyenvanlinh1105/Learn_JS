@@ -65,7 +65,7 @@ var isName = courses.find(function(course,index){
 })
 console.log(isName)
 
-// filter(): cũng tìm kiếm phần tử thỏa mãn nhma nó trả về tất cả kết quả tìm thấy
+// filter(): cũng tìm kiếm phần tử thỏa mãn nhma nó trả về tất cả kết quả tìm thấy=>array
 isName = courses.filter(function(course,index){
     return course.coin===0
 })
