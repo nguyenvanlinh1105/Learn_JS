@@ -39,49 +39,47 @@ var comments = [
 // 2. Từ comment lấy ra user id 
 // 3. từ user id lấy ra user tương ứng 
 // fake API 
-function getComment (){
-    return new Promise(function(resolve, reject){
-        setTimeout(() => {
-            resolve(comments)
-        }, 1000);
-    })
-}
-
-function getUserByIds(userIds){
+function getComments(){
     return new Promise(function(resolve){
         setTimeout(function(){
-            var result = users.filter(function(user){
-                return userIds.includes(user.id)
-            })
-            resolve(result)
+            resolve(comments)
         },1000)
     })
 }
 
+function getUserById(userIds){
+    return new Promise(function(resolve){
+      setTimeout(function(){
+        var result = users.filter(function(user){
+            return userIds.includes(user.id)
+        })
+        resolve(result)
+      },1000)
+    })
+}
 
-getComment()
+getComments()
     .then(function(comments){
-        console.log(comments)
-        var userIds = comments.map(comment => {
+        var userIds = comments.map(function(comment){
             return comment.user_id
-        });
-        return getUserByIds(userIds)
+        })
+        return getUserById(userIds)
             .then(function(users){
-                return {
+                return{
                     users: users,
-                    comments : comments
+                    comments: comments,
                 }
-               
             })
     })
+
     .then(function(data){
-        var commentBlock = document.getElementById('comment-block')
+        var ulblock= document.getElementById("comment-block")
         var html=''
         data.comments.forEach(comment => {
-             var user= data.users.find(function(user){
-                return user.id=== comment.user_id
-             })
-             html+=`<li>${user.name}:${comment.content}</li>`
+            var user = users.find(function(user){
+                return user.id === comment.user_id
+            })
+            html +=`<li>${user.name}: ${user.comment}</li>`
         });
-        commentBlock.innerHTML=html
+        ulblock.innerHTML=html
     })
