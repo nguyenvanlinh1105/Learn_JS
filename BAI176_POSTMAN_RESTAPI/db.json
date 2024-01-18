@@ -1,0 +1,24 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Khóa học javascript cơ bản",
+      "description": "Khóa học cung cấp cho các bạn các kiến thức cơ bản về javascript"
+    },
+    {
+      "id": 2,
+      "name": "Khóa học làm web với nodejs và express",
+      "description": "Khóa học cung cấp cho bạn những kiến thức và tạo ra sản phẩm"
+    },
+    {
+      "id": 3,
+      "name": "Khóa học làm web với nodejs và express",
+      "description": "Khóa học cung cấp cho bạn những kiến thức và tạo ra sản phẩm"
+    },
+    {
+      "id": 4,
+      "name": "Khóa học làm web với nodejs và express",
+      "description": "Khóa học cung cấp cho bạn những kiến thức và tạo ra sản phẩm"
+    }
+  ]
+}
