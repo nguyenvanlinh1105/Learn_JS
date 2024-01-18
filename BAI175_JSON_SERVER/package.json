@@ -1,0 +1,15 @@
+{
+  "name": "bai175_json_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bai175.js",
+  "scripts": {
+    "start":"json-server --watch db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.21"
+  }
+}

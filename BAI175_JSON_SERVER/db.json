@@ -1,0 +1,17 @@
+{
+    "courses":[
+        {"id":1,
+         "title":"Kiến thức nhập môn IT",
+         "description":"Kiến thức nhập môn IT"
+        },
+        {"id":1,
+         "title":"HTML CSS từ Zero đến Hero",
+         "description":"Khác biệt trong khóa học Pro: trang học giao diện mới, bài học siêu chi tiết, thực hành nhiều dự án, bài tập có gợi ý, đáp án và video chữa bài, v.v."
+        }
+    ],
+    "comments":[
+        {"id":1, "body":"some comment", "postId":1}
+    ],
+    "profile":{"name":"typicode"}
+
+}
