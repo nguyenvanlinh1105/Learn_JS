@@ -1,0 +1,23 @@
+.form-group{
+    display: flex;
+    width: 100%;
+    margin:0 0 10px 10px;
+}
+.form-group label{
+    display:block;
+    width: 80px;
+}
+.form-group input{
+    width:300px;
+}
+button{
+    margin-left:10px;
+    color:blue;
+    background-color: aqua;
+}
+.modifier{
+    display: none;
+}
+.modifier.open{
+    display:block
+}

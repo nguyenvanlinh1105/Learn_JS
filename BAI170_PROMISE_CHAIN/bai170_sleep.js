@@ -1,15 +1,26 @@
 function sleep(ms){
     return new Promise(function(resolve){
-        setTimeout(resolve, ms)
+        setTimeout(function(){
+            resolve()
+        },1000)
     })
 }
 
-sleep(1000)
+
+sleep(500)
     .then(function(){
-        console.log(1);
-        return sleep(1000)
+        console.log(1)
+        return sleep(500)
     })
     .then(function(){
-        console.log(2)
+        console.log(1)
+        return sleep(500)
     })
-    
+    .then(function(){
+        console.log(1)
+        return sleep(500)
+    })
+    .then(function(){
+        console.log(1)
+        return sleep(500)
+    })
