@@ -22,7 +22,7 @@ body > div{
     width:0;
     height: 6px;
     border-radius: 15px;
-    background-color:blue ;
+    background-color:rgb(168, 24, 137) ;
     transition:all 0.2s ease;
 }
 .tab-item {
@@ -30,7 +30,7 @@ body > div{
     padding:16px  20px 11px 20px;
     font-size: 20px;
     text-align: center;
-    color:rgb(72, 50, 135);
+    color:rgb(173, 20, 130);
     background-color: #fff;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
