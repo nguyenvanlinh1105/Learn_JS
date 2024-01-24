@@ -115,8 +115,8 @@ header h2 {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: 0.1s;
+  transition: opacity 0.1s;
 }
 
 .progress::-webkit-slider-thumb {
