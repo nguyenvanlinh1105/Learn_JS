@@ -149,7 +149,7 @@ header h2 {
 }
 
 .song:active {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .song.active .option,
