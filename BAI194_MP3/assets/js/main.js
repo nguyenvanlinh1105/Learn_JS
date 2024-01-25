@@ -12,6 +12,7 @@
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+const PLAYER_STORAGE_KEY='LN_PLAYER'
 const cd = $('.cd')
 const heading = $('header h2')
 const cdThumb = $('.cd-thumb');
@@ -29,6 +30,7 @@ const app={
     isPlaying: false,
     isRandom:false,
     isRepeat :false,
+    config:JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY))||{},
     songs: [
         {
             name:'Trái đất ôm mặt trời',
@@ -79,11 +81,15 @@ const app={
             image:'./assets/img/song5.png'
         }
     ],
+    setConfig:function(key,value){
+        this.config[key]=value
+        localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    },  
     render:function(){
 
         const htmls = this.songs.map((song,index)=>{
             return`
-            <div class="song ${index===this.currentIndex?'active':'' }">
+            <div data-index=${index} class="song ${index===this.currentIndex?'active':'' }">
                 <div class="thumb" style="background-image: url('${song.image}')">
                 </div>
                 <div class="body">
@@ -114,7 +120,7 @@ const app={
             {transform:'rotate(360deg'},
         ],{
             duration:10000,
-            interations:Infinity
+            iterations: Infinity
         })// trả về một đối tượng. 
 
         cdThumbAnimate.pause()
@@ -200,7 +206,9 @@ const app={
         // random song 
         btnRandom.onclick = function(){
             _this.isRandom= !_this.isRandom
+            _this.setConfig('isRandom',_this.isRandom)
             btnRandom.classList.toggle('active', _this.isRandom)
+
         }
         // audio ended =>next song 
         audio.onended= function(){
@@ -215,10 +223,22 @@ const app={
         btnRepeat.onclick = function(){
             _this.isRepeat= !_this.isRepeat
             btnRepeat.classList.toggle('active',_this.isRepeat)
+            _this.setConfig('isRepeat',_this.isRepeat)
         }
-        // xử lí khi click vào bài thì play
+        // xử lí khi click song => play
         playlist.onclick = function(e){
-            console.log(e.target)
+            const songNode = e.target.closest('.song:not(.active)')
+            if(songNode||!e.target.closest('.option')){
+               if(songNode){
+                    _this.currentIndex=Number(songNode.dataset.index);
+                    _this.loadCurrentSong()
+                    _this.render();
+                    audio.play();
+                    // songNode.getAttribute('data-index') có thể lấy index bằng cách này 
+               }else if(!e.target.closest('.option')){
+                // xử lí vào option
+               }
+            }
         } 
         
     },
@@ -227,6 +247,14 @@ const app={
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
   
+    },
+    loadConfig:function(){
+        this.isRandom= this.config.isRandom
+        this.isRepeat= this.config.isRepeat
+
+
+        // hoặc sử dụng cách ở phía dưới 
+        // Object.assign(this,this.config)
     },
     nextSong:function(){
         this.currentIndex++;
@@ -261,6 +289,10 @@ const app={
 
 
     start :function(){
+        this.loadConfig();// gán cấu hình từ config vào app 
+        btnRandom.classList.toggle('active', this.isRandom)
+        btnRepeat.classList.toggle('active', this.isRepeat)
+        
         this.defineProperties();// định nghĩa các thuộc tính cho object
         
         this.handleEvents()// Lắng nghe các sự kiện dom
