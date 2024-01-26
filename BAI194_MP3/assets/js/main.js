@@ -283,7 +283,7 @@ const app={
             $('.song.active').scrollIntoView({
                 behavior:'smooth',
                 block :'nearest'
-            },300);
+            },200);
        })// index 1, 2, 3, thì cho nó kéo xuông thêm nữa. 
     },
 
