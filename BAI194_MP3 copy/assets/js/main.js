@@ -1,6 +1,6 @@
 /*
     1. Render songs
-    2. Scroll top
+    2. Scroll top/// loadCurrentSong 
     3. Play/ pause/ seek
     4. CD rotate
     5. Next/ prev
@@ -14,10 +14,18 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const playlist= $('.playlist')
 const cd = $('.cd')
-console.log(cd)
-console.log(playlist)
+const btnPlay = $('.btn-toggle-play')
+const btnNext = $('.btn-next');
+const btnPrev = $('.btn-prev');
+const heading=$('header h2')
+const cdThumb = $('.cd-thumb')
+const player = $('.player');
+const progress = $('.progress')
 
+console.log(progress)
 const app={
+    currentIndex:0,
+    isPlaying:false,
     songs: [
         {
             name:'Trái đất ôm mặt trời',
@@ -86,20 +94,90 @@ const app={
         })
         playlist.innerHTML = html.join("")
     },
-
+    DefineProperties:function(){
+        Object.defineProperty(this, 'currentSong',{
+            get:function(){
+                return this.songs[this.currentIndex]
+            }
+        })
+    },
+   
+    loadCurrentSong:function(){
+        heading.innerText=this.currentSong.name;
+        cdThumb.style.backgroundImage=`url('${this.currentSong.image}')`
+        audio.src=this.currentSong.path;
+    },
     handleEvent:function(){
         const _this = this;
+        // cd animate 
+        const cdThumbAnimate = cdThumb.animate([// trả về một đối tượng 
+            {transform:'rotate(360deg)'}
+        ],{
+            duration:10000,
+            iterations:Infinity
+        })
+        cdThumbAnimate.pause();
+
         // scrollTop
         var cdWidth = cd.offsetWidth;
         document.onscroll= function(){
             var scrollTop = window.scrollY||document.documentElement.scrollTop;
             var newScroll = cdWidth-scrollTop;
-            cd = newScroll>0? newScroll:0+'px'
+            cd.style.width = newScroll>0? newScroll+'px':0
+            cd.style.opacity = newScroll/cdWidth;
+            Object.assign(cd.style,{
+                width : newScroll>0? newScroll+'px':0,
+                opacity : newScroll/cdWidth
+            })
         }
+        // pause// play// seek 
+        btnPlay.onclick = function(){
+            if(_this.isPlaying){
+                audio.pause();
+            }else{
+                audio.play();
+            }
+        }
+        
+        audio.onplay= function(){
+            _this.isPlaying = true;
+            player.classList.add('playing')
+            cdThumbAnimate.play()
+        }
+        audio.onpause= function(){
+            _this.isPlaying = false;
+            player.classList.remove('playing')
+            cdThumbAnimate.pause();
+        }
+        // seek
+        // thay đổi khi bài hát thay đổi 
+        audio.ontimeupdate= function(){
+            if(audio.duration){
+                var progressPercent= audio.currentTime /audio.duration*100;
+                progress.value=progressPercent;
+                updateProgressColor();
+            }
+        }
+        // update background theo nhạc 
+        progress.onchange=function(){
+            var currentPercent = progress.value /100*audio.duration;
+            audio.currentTime = currentPercent;
+            updateProgressColor();
+        }
+        function updateProgressColor(){
+            var percent = (progress.value-progress.min)/(progress.max-progress.min);
+            var color=`linear-gradient(to right , var(--primary-color) ${percent*100}%,#ddd ${percent*100}%)`
+            progress.style.background=color
+        }
+        // next : 
+
     },
     start:function(){
+        this.DefineProperties();
+        this.loadCurrentSong();
         this.renderSong();
         this.handleEvent();
+        
     }
 }
 
