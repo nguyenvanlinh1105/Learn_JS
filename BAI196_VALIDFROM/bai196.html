@@ -14,7 +14,7 @@
       
           <div class="spacer"></div>
       
-          <div class="form-group">
+          <div class="form-group ">
             <label for="fullname" class="form-label">Tên đầy đủ</label>
             <input id="fullname" name="fullname" type="text" placeholder="VD: Sơn Đặng" class="form-control">
             <span class="form-message"></span>
@@ -29,7 +29,7 @@
           <div class="form-group">
             <label for="password" class="form-label">Mật khẩu</label>
             <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-            <span class="form-message"></span>
+            <span class="form-message">dfefte</span>
           </div>
       
           <div class="form-group">
@@ -45,3 +45,12 @@
 </body>
 </html>
 <script src="main.js"></script>
+<script>
+  Validator({
+    form:'#form-1',
+    rules:[
+      Validator.isRequired('#fullname'),
+      Validator.isEmail('#email')
+    ]
+  })
+</script>

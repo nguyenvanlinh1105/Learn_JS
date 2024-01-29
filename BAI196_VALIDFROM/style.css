@@ -67,7 +67,7 @@ html{
     border-color: #f33a58;
 }
 .form-group.invalid .form-message{
-    border-color:#f33a58;
+    color:#f33a58;
 }
 .form-message{
     font-size:1.2rem;
