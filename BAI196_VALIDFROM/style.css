@@ -96,3 +96,15 @@ html{
 .spacer{
     margin-top:36px;
 }
+.form-group_gender{
+    display: flex;
+    width: 200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.form-group_gender h3{
+    display: block;
+    width:50px;
+    padding-right:3px
+}
