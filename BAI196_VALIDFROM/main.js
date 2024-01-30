@@ -3,6 +3,7 @@
 */
 
 function Validator(options){
+    console.log(options.rules)
     function getParentElement(inputElement, selector){
         while(inputElement.parentElement){
             if(inputElement.parentElement.matches(selector)){
@@ -64,7 +65,10 @@ function Validator(options){
                                 values[input.name]=formELement.querySelector('input[name="'+input.name+'"]:checked').value
                                 break;
                             case 'checkbox':
-                                if(!input.matches(":checked")) return values;
+                                if(!input.matches(":checked")){
+                                    values[input.name]=''
+                                    return values;
+                                } 
                                 if(!Array.isArray(values[input.name])){
                                     values[input.name]=[]
                                 }
